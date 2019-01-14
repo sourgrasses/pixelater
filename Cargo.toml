@@ -1,0 +1,12 @@
+[package]
+name = "pixelater"
+version = "0.1.0"
+authors = ["Jenn Wheeler <jwheeler@antiochcollege.edu>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+helix = "0.7.5"
+image = "0.20.1"
+rayon = "1.0.3"
