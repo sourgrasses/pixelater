@@ -47,20 +47,20 @@ ruby! {
             image.pixelate();
             self.image = Some(image);
 
-            if let Some(image) = self.image.clone() {
-                let mut fout = File::create("tmp.jpg").unwrap();
-                image::ImageRgb8(image.image).write_to(&mut fout, image::JPEG).unwrap();
+            if let Some(ref image) = self.image.clone() {
+                let _ = File::create("tmp.jpg").unwrap();
+                image.image.save("tmp.jpg").unwrap();
             } else {
                 eprintln!("Error writing tmp.jpg");
             };
         }
 
         def save(&self, filename: String) {
-            if let Some(image) = self.image.clone() {
-                let mut fout = File::create(&filename).unwrap();
-                image::ImageRgb8(image.image).write_to(&mut fout, image::JPEG).unwrap();
+            if let Some(ref image) = self.image {
+                let _ = File::create(&filename).unwrap();
+                image.image.save(&filename).unwrap();
             } else {
-                eprintln!("Error writing tmp.jpg");
+                eprintln!("Error writing {}", filename);
             };
         }
     }

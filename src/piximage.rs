@@ -1,4 +1,4 @@
-#[allow(unnecesary_parentheses)]
+#[allow(unused_parens)]
 
 use image::{open, ImageError, Pixel, Rgb, RgbImage};
 
@@ -77,6 +77,14 @@ impl PixelatedImage {
         }
 
         self
+    }
+}
+
+impl Iterator for PixelatedImage {
+    type Item = (u32, u32);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        unimplemented!()
     }
 }
 
